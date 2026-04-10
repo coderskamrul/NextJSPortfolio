@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'WordPress Plugin Developer Portfolio',
+  title: 'SASS & Plugin Developer Portfolio',
   description: 'Results-driven WordPress Plugin Developer with 2+ years of experience building scalable, high-performance plugins used by 100K+ active users.',
   generator: 'hmdkamrul',
   keywords: ['coderskamrul', 'hmdkamrul', 'WordPress', 'Plugin Developer', 'PHP', 'React', 'Full Stack', 'Web Developer'],
