@@ -168,52 +168,7 @@ export function ExperienceSection() {
         </div>
 
         {/* Education */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 max-w-4xl mx-auto"
-        >
-          <div className="bg-card/50 backdrop-blur-sm rounded-xl border border-primary/20 overflow-hidden">
-            {/* Education header */}
-            <div className="flex items-center justify-between px-4 py-2 bg-primary/5 border-b border-primary/20">
-              <div className="flex items-center gap-2">
-                <div className="flex gap-1.5">
-                  <div className="w-2 h-2 rounded-full bg-cyan-500" />
-                  <div className="w-2 h-2 rounded-full bg-cyan-500" />
-                  <div className="w-2 h-2 rounded-full bg-cyan-500" />
-                </div>
-                <span className="text-xs font-mono text-muted-foreground ml-2">education.json</span>
-              </div>
-              <span className="text-xs font-mono text-cyan-400">VERIFIED</span>
-            </div>
-
-            <div className="p-6">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/30">
-                    <GraduationCap className="w-8 h-8 text-cyan-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg">{resumeData.education.degree}</h3>
-                    <p className="text-primary font-mono">{resumeData.education.institution}</p>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
-                      <MapPin className="w-3 h-3" />
-                      <span>{resumeData.education.location}</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center justify-center px-6 py-4 rounded-xl bg-cyan-500/10 border border-cyan-500/30">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-cyan-400 font-mono">{resumeData.education.cgpa}</div>
-                    <div className="text-xs text-muted-foreground font-mono">CGPA</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+      
       </div>
     </AnimatedSection>
   );

@@ -17,9 +17,9 @@ const footerLinks = {
     { name: "Blog", href: "/blog" },
   ],
   social: [
-    { name: "GitHub", href: "https://github.com", icon: Github },
-    { name: "LinkedIn", href: "https://linkedin.com", icon: Linkedin },
-    { name: "Email", href: "mailto:developer@example.com", icon: Mail },
+    { name: "GitHub", href: "https://github.com/coderskamrul", icon: Github },
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/coderskamrul", icon: Linkedin },
+    { name: "Email", href: "mailto:mdkamrul2058@gmail.com", icon: Mail },
   ],
 };
 

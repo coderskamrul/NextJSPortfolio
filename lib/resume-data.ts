@@ -2,7 +2,7 @@ export const resumeData = {
   name: "Hmd Kamrul",
   title: "Software Engineer",
   tagline: "Innovating Software to Transform Ideas Into Impactful Solutions",
-  email: "coderskamrul@gmail.com",
+  email: "mdkamrul2058@gmail.com",
   github: "https://github.com/coderskamrul",
   linkedin: "https://www.linkedin.com/in/coderskamrul/",
   twitter: "https://x.com/CodersKamrul",
@@ -195,19 +195,28 @@ export const resumeData = {
       title: "1st Runner-Up Award in IUBAT",
       description: "Intra - University Programming Contest Spring 2021 - (IUPC)",
       image: "https://i.ibb.co.com/Z1K4gPfd/1738326537583-1.jpg",
-      year: "2021"
+      year: "2021",
+      event: "IUBAT",
+      organization: "IUBAT CSE Department",
+      team: "IUBAT_ItsNotUs"
     },
     {
       title: "2nd Runner-Up Award in IUBAT",
       description: "Intra - University Programming Contest Summer 2022 - (IUPC)",
       image: "https://i.ibb.co.com/Nd7073Kh/IMG-5772.jpg",
-      year: "2022"
+      year: "2022",
+      event: "IUBAT",
+      organization: "IUBAT CSE Department",
+      team: "IUBAT_Potato_Mind"
     },
     {
       title: "1st Runner-Up Award in UITS",
       description: "UITS Collaboration Programming Contest 2022",
       image: "https://i.ibb.co.com/Wpkrt6B2/1738326322261c-1.png",
-      year: "2022"
+      year: "2022",
+      event: "UITS",
+      organization: "UITS CSE Department",
+      team: "IUBAT_Potato_Mind"
     }
   ],
   

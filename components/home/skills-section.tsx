@@ -266,7 +266,7 @@ function ProblemSolvingTerminal() {
   const platforms = [
     {
       name: "Codeforces",
-      handle: "@raisa_ferdous",
+      handle: "@hmdkamrul",
       rating: resumeData.problemSolving.codeforces.rating,
       solved: resumeData.problemSolving.codeforces.solved,
       rank: "Pupil",
@@ -275,7 +275,7 @@ function ProblemSolvingTerminal() {
     },
     {
       name: "CodeChef",
-      handle: "@raisa_ferdous",
+      handle: "@hmdkamrul",
       rating: resumeData.problemSolving.codechef.rating,
       solved: resumeData.problemSolving.codechef.solved,
       rank: "3 Star",
@@ -284,7 +284,7 @@ function ProblemSolvingTerminal() {
     },
     {
       name: "LeetCode",
-      handle: "@raisa_ferdous",
+      handle: "@hmdkamrul",
       rating: "N/A",
       solved: resumeData.problemSolving.leetcode.solved,
       rank: "Active",

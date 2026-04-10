@@ -64,7 +64,7 @@ export function Navigation() {
             <Shield className="w-3 h-3" />
             SECURE
           </span>
-          <span className="text-muted-foreground">hmdkamrul@portfolio:~$</span>
+          <span className="text-muted-foreground">mdkamrul2058@gmail.com:~$</span>
         </div>
         <div className="flex items-center gap-4">
           <span className="text-muted-foreground flex items-center gap-1">

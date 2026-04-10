@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/animated-section";
 import { resumeData } from "@/lib/resume-data";
 import Link from "next/link";
+import Image from "next/image";
 import { 
   User, 
   Code2, 
@@ -208,10 +209,15 @@ export default function AboutPage() {
                   <div className="text-center">
                     {/* Glitch Avatar */}
                     <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className={`relative w-40 h-40 mx-auto rounded-2xl bg-card border-2 border-primary/30 flex items-center justify-center mb-6 overflow-hidden ${glitchText ? 'glitch-hover' : ''}`}
+                      whileHover={{ scale: 1.2 }}
+                      className={`relative w-50 h-50 mx-auto rounded-2xl bg-card border-2 border-primary/30 flex items-center justify-center mb-6 overflow-hidden ${glitchText ? 'glitch-hover' : ''}`}
                     >
-                      <div className="text-5xl font-bold text-primary font-mono">{'</>'}</div>
+                      <Image
+                        src="https://i.ibb.co.com/svLtDBy1/hmdkamrul-img.png"
+                        alt="Profile"
+                        fill
+                        className="object-cover"
+                      />
                       {/* Scan line effect */}
                       <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(100,200,180,0.05)_50%)] bg-[length:100%_4px] pointer-events-none" />
                       {/* Corner brackets */}
@@ -222,7 +228,7 @@ export default function AboutPage() {
                     </motion.div>
 
                     <h2 className={`text-xl font-bold mb-1 ${glitchText ? 'text-glow' : ''}`}>
-                      WordPress Plugin Developer
+                      Plugin & SASS Developer
                     </h2>
                     <p className="text-primary font-mono text-sm mb-4">@software_engineer</p>
 

@@ -254,6 +254,9 @@ export default function CertificatesPage() {
 
                   {/* Certificate Info */}
                   <div className="p-4 border-t border-border">
+                    <h3 className="text-sm font-semibold text-foreground mb-3 line-clamp-2 hover:text-primary transition-colors">
+                      {cert.title}
+                    </h3>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono">
                         <Calendar className="w-3 h-3" />
@@ -276,127 +279,7 @@ export default function CertificatesPage() {
       </AnimatedSection>
 
       {/* Skills Matrix - Hacker Style */}
-      <AnimatedSection className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center gap-3 mb-12">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-500/10 border border-green-500/30">
-              <Terminal className="w-5 h-5 text-green-400" />
-              <span className="font-mono text-sm text-green-400">$ run skill_matrix.sh</span>
-            </div>
-          </div>
 
-          <div className="max-w-4xl mx-auto">
-            {/* ASCII Header */}
-            <motion.pre
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="font-mono text-xs text-primary/60 mb-8 overflow-x-auto"
-            >
-{`┌──────────────────────────────────────────────────────────────┐
-│  SKILL VERIFICATION MATRIX v2.0                              │
-│  STATUS: ACTIVE | LAST_UPDATE: 2024 | VERIFIED: TRUE         │
-└──��───────────────────────────────────────────────────────────┘`}
-            </motion.pre>
-
-            {/* Skills with animated progress */}
-            <div className="space-y-6">
-              {skills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  onMouseEnter={() => setVerifyingSkill(index)}
-                  onMouseLeave={() => setVerifyingSkill(null)}
-                  className="group"
-                >
-                  <div className="bg-card/50 backdrop-blur-sm rounded-lg border border-border p-4 hover:border-primary/30 transition-all">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-3">
-                        <Code2 className="w-5 h-5 text-primary" />
-                        <span className="font-mono text-sm">{skill.name}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        {verifyingSkill === index ? (
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="flex items-center gap-1"
-                          >
-                            <motion.div
-                              animate={{ rotate: 360 }}
-                              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                              className="w-3 h-3 border-2 border-primary border-t-transparent rounded-full"
-                            />
-                            <span className="font-mono text-xs text-yellow-400">VERIFYING...</span>
-                          </motion.div>
-                        ) : (
-                          <span className="font-mono text-sm text-primary">{skill.level}%</span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Progress bar */}
-                    <div className="relative h-2 bg-muted rounded-full overflow-hidden">
-                      <motion.div
-                        className={`absolute inset-y-0 left-0 bg-gradient-to-r ${skill.color} rounded-full`}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                      />
-                      {/* Animated shine effect */}
-                      <motion.div
-                        className="absolute inset-y-0 w-20 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                        animate={{ x: ["-100%", "500%"] }}
-                        transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
-                      />
-                    </div>
-
-                    {/* Skill level indicators */}
-                    <div className="flex justify-between mt-2">
-                      {[0, 25, 50, 75, 100].map((marker) => (
-                        <div
-                          key={marker}
-                          className={`font-mono text-xs ${
-                            skill.level >= marker ? "text-primary" : "text-muted-foreground/50"
-                          }`}
-                        >
-                          {marker}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Summary stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mt-12 grid grid-cols-3 gap-4"
-            >
-              {[
-                { label: "SKILLS_VERIFIED", value: skills.length, color: "text-green-400" },
-                { label: "AVG_PROFICIENCY", value: `${Math.round(skills.reduce((a, b) => a + b.level, 0) / skills.length)}%`, color: "text-blue-400" },
-                { label: "STATUS", value: "ACTIVE", color: "text-yellow-400" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="bg-card/50 backdrop-blur-sm rounded-lg border border-border p-4 text-center"
-                >
-                  <div className={`font-mono text-2xl font-bold ${stat.color}`}>{stat.value}</div>
-                  <div className="font-mono text-xs text-muted-foreground mt-1">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </AnimatedSection>
 
       {/* Languages Section */}
       <AnimatedSection className="py-20 bg-card/30">

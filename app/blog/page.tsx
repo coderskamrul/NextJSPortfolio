@@ -27,7 +27,7 @@ import { blogPosts } from "@/lib/blog-data";
 const terminalCommands = [
   "$ cd ~/blog",
   "$ ls -la ./posts/",
-  "[INFO] Found 6 articles",
+  "[INFO] Found 4 articles",
   "[LOAD] Rendering posts...",
   "[OK] Blog initialized"
 ];
