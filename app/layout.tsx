@@ -21,25 +21,25 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'WordPress Plugin Developer Portfolio',
   description: 'Results-driven WordPress Plugin Developer with 2+ years of experience building scalable, high-performance plugins used by 100K+ active users.',
-  generator: 'v0.app',
-  keywords: ['WordPress', 'Plugin Developer', 'PHP', 'React', 'Full Stack', 'Web Developer'],
+  generator: 'hmdkamrul',
+  keywords: ['coderskamrul', 'hmdkamrul', 'WordPress', 'Plugin Developer', 'PHP', 'React', 'Full Stack', 'Web Developer'],
   authors: [{ name: 'WordPress Developer' }],
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      // {
+      //   url: '/icon-light-32x32.png',
+      //   media: '(prefers-color-scheme: light)',
+      // },
+      // {
+      //   url: '/icon-dark-32x32.png',
+      //   media: '(prefers-color-scheme: dark)',
+      // },
+      // {
+      //   url: '/icon.svg',
+      //   type: 'image/svg+xml',
+      // },
     ],
-    apple: '/apple-icon.png',
+    // apple: '/apple-icon.png',
   },
 }
 
