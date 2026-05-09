@@ -17,7 +17,22 @@ import {
   ArrowRight,
   Github,
   Linkedin,
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube,
+  Codepen,
 } from "lucide-react";
+
+const socialItems = [
+  { key: "facebook", Icon: Facebook, label: "Facebook", color: "hover:text-blue-500 hover:border-blue-500/60 hover:bg-blue-500/10" },
+  { key: "linkedin", Icon: Linkedin, label: "LinkedIn", color: "hover:text-sky-400 hover:border-sky-400/60 hover:bg-sky-400/10" },
+  { key: "twitter", Icon: Twitter, label: "Twitter / X", color: "hover:text-cyan-300 hover:border-cyan-300/60 hover:bg-cyan-300/10" },
+  { key: "instagram", Icon: Instagram, label: "Instagram", color: "hover:text-pink-500 hover:border-pink-500/60 hover:bg-pink-500/10" },
+  { key: "github", Icon: Github, label: "GitHub", color: "hover:text-foreground hover:border-foreground/60 hover:bg-foreground/10" },
+  { key: "codepen", Icon: Codepen, label: "CodePen", color: "hover:text-yellow-400 hover:border-yellow-400/60 hover:bg-yellow-400/10" },
+  { key: "youtube", Icon: Youtube, label: "YouTube", color: "hover:text-red-500 hover:border-red-500/60 hover:bg-red-500/10" },
+] as const;
 import { resumeData } from "@/lib/resume-data";
 import { Button } from "@/components/ui/button";
 
@@ -397,29 +412,38 @@ export function AwardsHeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="flex items-center gap-3"
+              className="flex flex-col gap-3"
             >
               <span className="text-xs font-mono text-muted-foreground">
                 FOLLOW://
               </span>
-              <motion.a
-                href={resumeData.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="p-2 rounded-lg bg-card border border-primary/30 hover:border-primary hover:bg-primary/10"
-              >
-                <Github className="w-4 h-4" />
-              </motion.a>
-              <motion.a
-                href={resumeData.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="p-2 rounded-lg bg-card border border-primary/30 hover:border-primary hover:bg-primary/10"
-              >
-                <Linkedin className="w-4 h-4" />
-              </motion.a>
+              <div className="flex flex-wrap items-center gap-2.5">
+                {socialItems.map(({ key, Icon, label, color }, i) => {
+                  const href =
+                    resumeData.socialLinks[
+                      key as keyof typeof resumeData.socialLinks
+                    ];
+                  if (!href) return null;
+                  return (
+                    <motion.a
+                      key={key}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      title={label}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.85 + i * 0.05 }}
+                      whileHover={{ scale: 1.12, y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`flex items-center justify-center w-11 h-11 rounded-full bg-card/60 backdrop-blur-sm border border-border text-muted-foreground transition-colors ${color}`}
+                    >
+                      <Icon className="w-[18px] h-[18px]" />
+                    </motion.a>
+                  );
+                })}
+              </div>
             </motion.div>
           </motion.div>
 
