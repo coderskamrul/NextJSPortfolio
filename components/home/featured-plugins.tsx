@@ -25,7 +25,7 @@ export function FeaturedPlugins() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <div className="bg-card/50 backdrop-blur-sm rounded-xl border border-primary/20 overflow-hidden max-w-2xl">
+          <div className="bg-card/50 backdrop-blur-sm rounded-xl border border-primary/20 overflow-hidden max-w-2xl m-auto">
             {/* Terminal header */}
             <div className="flex items-center justify-between px-4 py-2 bg-primary/5 border-b border-primary/20">
               <div className="flex items-center gap-2">
@@ -43,7 +43,7 @@ export function FeaturedPlugins() {
             </div>
             
             {/* Terminal content */}
-            <div className="p-4 font-mono text-sm">
+            <div className="p-4 font-mono text-sm m-auto">
               <div className="text-muted-foreground">
                 <span className="text-primary">$</span> ls -la ./wordpress/plugins/
               </div>

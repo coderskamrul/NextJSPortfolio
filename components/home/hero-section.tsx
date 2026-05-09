@@ -253,7 +253,7 @@ export function HeroSection() {
               <Button asChild size="lg" className="group hover:bg-primary/90 font-mono">
                 <Link href="/contact">
                   <Cpu className="mr-2 w-4 h-4" />
-                  INIT_CONTACT
+                  INIT_CONTACT 
                   <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>

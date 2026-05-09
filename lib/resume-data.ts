@@ -219,7 +219,39 @@ export const resumeData = {
       team: "IUBAT_Potato_Mind"
     }
   ],
-  
+   awards_slider: [
+    {
+      title: "Winner of Startise AI Innovation Challenge 2025",
+      description: "Awarded for developing an innovative AI feature for production.",
+      image_url: "https://i.ibb.co.com/V0PWwSpc/ai-award-startise.jpg"
+    },
+    {
+      title: "1st Runner-Up Award in IUBAT",
+      description: "Intra - University Programming Contest Spring 2021 - (IUPC)",
+      image_url: "https://i.ibb.co.com/Z1K4gPfd/1738326537583-1.jpg"
+    },
+    {
+      title: "2nd Runner-Up Award in IUBAT",
+      description: "Intra - University Programming Contest Summer 2022 - (IUPC)",
+      image_url: "https://i.ibb.co.com/Nd7073Kh/IMG-5772.jpg"
+    },
+    {
+      title: "1st Runner-Up Award in UITS",
+      description: "UITS Collaboration Programming Contest 2022 · Nov 2022",
+      image_url: "https://i.ibb.co.com/Wpkrt6B2/1738326322261c-1.png"
+    },
+    {
+      title: "ICPC Regional Contest Participant 2022",
+      description: "International Collegiate Programming Contest 2022 · Nov 2022",
+      image_url: "https://i.ibb.co.com/N2PxfyBS/icpc-2022k.jpg"
+    },
+    {
+      title: "ICPC Regional Contest Participant 2023",
+      description: "International Collegiate Programming Contest 2023 · Nov 2023",
+      image_url: "https://i.ibb.co.com/zVRv8MJP/icpc-2023k.jpg"
+    }
+  ],
+
   certificates: [
     { title: "The 2022 ICPC Asia Dhaka Regional Contest", image: "https://raw.githubusercontent.com/coderskamrul/assets/refs/heads/main/ICPC%202022.jpeg" },
     { title: "The 2023 ICPC Asia Dhaka Regional Contest", image: "https://i.ibb.co.com/PZRwbmSW/icpc-2023.jpg" },

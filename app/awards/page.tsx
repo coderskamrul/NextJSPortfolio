@@ -26,6 +26,7 @@ const awardImages = [
   { id: 1, src: "https://i.ibb.co.com/Z1K4gPfd/1738326537583-1.jpg", alt: "1st Runner-Up Award in IUBAT - Intra University Programming Contest Spring 2021" },
   { id: 2, src: "https://i.ibb.co.com/Nd7073Kh/IMG-5772.jpg", alt: "2nd Runner-Up Award in IUBAT - Intra University Programming Contest Summer 2022" },
   { id: 3, src: "https://i.ibb.co.com/Wpkrt6B2/1738326322261c-1.png", alt: "1st Runner-Up Award in UITS - Collaboration Programming Contest 2022" },
+  { id: 4, src: "https://i.ibb.co.com/V0PWwSpc/ai-award-startise.jpg", alt: "Winner of Startise AI Innovation Challenge 2025" },
 ];
 
 const terminalCommands = [
