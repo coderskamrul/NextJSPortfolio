@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/animated-section";
+import { TiltCard, ScrollScale, CountUp, FloatingOrbs } from "@/components/scroll/scroll-primitives";
 import { resumeData } from "@/lib/resume-data";
 import Image from "next/image";
 import { 
@@ -77,6 +78,7 @@ export default function AwardsPage() {
       
       {/* Hero Section with Terminal */}
       <section className="pt-32 pb-20 relative overflow-hidden">
+        <FloatingOrbs count={2} />
         {/* Matrix Background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(100,200,180,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(100,200,180,0.03)_1px,transparent_1px)] bg-[size:30px_30px]" />
@@ -163,10 +165,10 @@ export default function AwardsPage() {
             className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12"
           >
             {[
-              { icon: Medal, value: "04", label: "RUNNER_UP", color: "text-yellow-400", borderColor: "border-yellow-500/30" },
-              { icon: Flag, value: "03", label: "ICPC_EVENTS", color: "text-blue-400", borderColor: "border-blue-500/30" },
-              { icon: Star, value: "1325", label: "MAX_RATING", color: "text-red-400", borderColor: "border-red-500/30" },
-              { icon: Target, value: "1500+", label: "PROBLEMS", color: "text-green-400", borderColor: "border-green-500/30" },
+              { icon: Medal, value: 4, suffix: "", label: "RUNNER_UP", color: "text-yellow-400", borderColor: "border-yellow-500/30" },
+              { icon: Flag, value: 3, suffix: "", label: "ICPC_EVENTS", color: "text-blue-400", borderColor: "border-blue-500/30" },
+              { icon: Star, value: 1325, suffix: "", label: "MAX_RATING", color: "text-red-400", borderColor: "border-red-500/30" },
+              { icon: Target, value: 1500, suffix: "+", label: "PROBLEMS", color: "text-green-400", borderColor: "border-green-500/30" },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -187,7 +189,7 @@ export default function AwardsPage() {
                 <div className="relative z-10">
                   <stat.icon className={`w-6 h-6 ${stat.color} mb-3`} />
                   <div className={`text-3xl font-bold font-mono ${stat.color}`}>
-                    {stat.value}
+                    <CountUp to={stat.value} suffix={stat.suffix} duration={1.8 + index * 0.2} />
                   </div>
                   <div className="text-xs font-mono text-muted-foreground mt-1">
                     {stat.label}
@@ -220,8 +222,9 @@ export default function AwardsPage() {
           {/* Image Gallery Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {awardImages.map((image, index) => (
+              <ScrollScale key={image.id} from={0.9} className="h-full">
+              <TiltCard intensity={7} className="h-full">
               <motion.div
-                key={image.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -269,6 +272,8 @@ export default function AwardsPage() {
                 <div className="absolute -bottom-1 -left-1 w-4 h-4 border-l-2 border-b-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute -bottom-1 -right-1 w-4 h-4 border-r-2 border-b-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity" />
               </motion.div>
+              </TiltCard>
+              </ScrollScale>
             ))}
           </div>
         </div>

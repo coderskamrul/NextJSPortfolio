@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/animated-section";
+import { TiltCard, TextReveal, ParallaxY, FloatingOrbs, Marquee } from "@/components/scroll/scroll-primitives";
 import { resumeData } from "@/lib/resume-data";
 import { 
   Puzzle, 
@@ -52,8 +53,11 @@ export default function ProjectsPage() {
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 relative overflow-hidden">
-        {/* Background Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(100,200,180,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(100,200,180,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        <FloatingOrbs count={2} />
+        {/* Background Grid with parallax */}
+        <ParallaxY offset={70} className="absolute inset-0">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(100,200,180,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(100,200,180,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        </ParallaxY>
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -68,7 +72,9 @@ export default function ProjectsPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               <span className="text-muted-foreground font-mono text-xl">git log --oneline </span>
               <br />
-              <span className="text-primary text-glow">My Projects</span>
+              <span className="text-primary text-glow">
+                <TextReveal text="My Projects" />
+              </span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               A collection of WordPress plugins and full-stack applications I&apos;ve built and contributed to.
@@ -120,6 +126,7 @@ export default function ProjectsPage() {
               <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {plugins.map((plugin) => (
                   <StaggerItem key={plugin.name}>
+                    <TiltCard intensity={8} className="h-full">
                     <motion.div
                       whileHover={{ scale: 1.02, y: -4 }}
                       className="h-full bg-card/50 backdrop-blur-sm rounded-xl border border-border overflow-hidden hover:border-primary/30 transition-all group"
@@ -180,6 +187,7 @@ export default function ProjectsPage() {
                         </div>
                       </div>
                     </motion.div>
+                    </TiltCard>
                   </StaggerItem>
                 ))}
               </StaggerContainer>
@@ -210,6 +218,7 @@ export default function ProjectsPage() {
               <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {projects.map((project) => (
                   <StaggerItem key={project.title}>
+                    <TiltCard intensity={5} className="h-full">
                     <motion.div
                       whileHover={{ scale: 1.01, y: -4 }}
                       className="h-full bg-card/50 backdrop-blur-sm rounded-xl border border-border overflow-hidden hover:border-primary/30 transition-all group"
@@ -272,9 +281,28 @@ export default function ProjectsPage() {
                         </div>
                       </div>
                     </motion.div>
+                    </TiltCard>
                   </StaggerItem>
                 ))}
               </StaggerContainer>
+
+              {/* Tech marquee */}
+              <div className="mt-12 -mx-4">
+                <Marquee speed={40} className="py-4 border-y border-border/50 bg-card/20">
+                  {[
+                    "WordPress", "PHP", "React", "Next.js", "TypeScript",
+                    "Node.js", "Python", "MongoDB", "MySQL", "Docker",
+                    "GraphQL", "Tailwind", "Redux", "Express", "Java",
+                  ].map((tech, i) => (
+                    <span
+                      key={`${tech}-${i}`}
+                      className="px-4 py-1.5 font-mono text-sm text-primary/80 border border-primary/20 rounded-full bg-card/40 shrink-0"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </Marquee>
+              </div>
             </div>
           </AnimatedSection>
         )}

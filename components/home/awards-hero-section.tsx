@@ -23,6 +23,7 @@ import {
   Youtube,
   Codepen,
 } from "lucide-react";
+import { ParallaxY } from "@/components/scroll/scroll-primitives";
 
 const socialItems = [
   { key: "facebook", Icon: Facebook, label: "Facebook", color: "hover:text-blue-500 hover:border-blue-500/60 hover:bg-blue-500/10" },
@@ -179,9 +180,9 @@ export function AwardsHeroSection() {
         </div>
       )}
 
-      {/* Floating trophies */}
+      {/* Floating trophies — parallax-drift on scroll */}
       {mounted && (
-        <>
+        <ParallaxY offset={120} className="absolute inset-0 pointer-events-none">
           <motion.div
             className="absolute top-32 left-8 lg:left-16 text-yellow-400/15"
             animate={{ y: [0, -20, 0], rotate: [0, 8, 0] }}
@@ -203,7 +204,7 @@ export function AwardsHeroSection() {
           >
             <Crown className="w-16 h-16" />
           </motion.div>
-        </>
+        </ParallaxY>
       )}
 
       <div className="container mx-auto px-4 relative z-10">

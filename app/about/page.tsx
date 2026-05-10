@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/animated-section";
+import { CountUp, TextReveal, ParallaxY, BlurReveal, FloatingOrbs } from "@/components/scroll/scroll-primitives";
 import { resumeData } from "@/lib/resume-data";
 import Link from "next/link";
 import Image from "next/image";
@@ -63,10 +64,10 @@ const asciiHeaders = {
 };
 
 const statCards = [
-  { icon: Users, label: "Plugin Users", value: "100K+", color: "text-cyan-400" },
-  { icon: Code2, label: "Problems Solved", value: "1500+", color: "text-green-400" },
-  { icon: Trophy, label: "Awards Won", value: "8+", color: "text-yellow-400" },
-  { icon: Target, label: "ICPC Events", value: "5+", color: "text-purple-400" }
+  { icon: Users, label: "Plugin Users", value: 100, suffix: "K+", color: "text-cyan-400" },
+  { icon: Code2, label: "Problems Solved", value: 1500, suffix: "+", color: "text-green-400" },
+  { icon: Trophy, label: "Awards Won", value: 8, suffix: "+", color: "text-yellow-400" },
+  { icon: Target, label: "ICPC Events", value: 5, suffix: "+", color: "text-purple-400" }
 ];
 
 const skills = [
@@ -117,8 +118,12 @@ export default function AboutPage() {
       
       {/* Hero Section with Matrix Effect */}
       <section className="pt-32 pb-20 relative overflow-hidden">
-        {/* Animated Grid Background */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(100,200,180,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(100,200,180,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        {/* Floating ambient orbs */}
+        <FloatingOrbs count={3} />
+        {/* Animated Grid Background with parallax drift */}
+        <ParallaxY offset={60} className="absolute inset-0">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(100,200,180,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(100,200,180,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        </ParallaxY>
         
         {/* Floating Code Particles */}
         {mounted && (
@@ -264,7 +269,9 @@ export default function AboutPage() {
                         className="bg-card/50 rounded-lg p-4 border border-border hover:border-primary/30 transition-all group"
                       >
                         <stat.icon className={`w-5 h-5 ${stat.color} mb-2 group-hover:animate-pulse`} />
-                        <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
+                        <div className={`text-2xl font-bold ${stat.color}`}>
+                          <CountUp to={stat.value} suffix={stat.suffix} duration={1.6 + index * 0.15} />
+                        </div>
                         <div className="text-xs text-muted-foreground font-mono">{stat.label}</div>
                       </motion.div>
                     ))}
@@ -296,7 +303,7 @@ export default function AboutPage() {
             </div>
             <h2 className="text-3xl font-bold">
               <span className="text-primary">&lt;</span>
-              Technical Arsenal
+              <TextReveal text="Technical Arsenal" className="inline-block" />
               <span className="text-primary">/&gt;</span>
             </h2>
           </motion.div>
@@ -507,18 +514,17 @@ export default function AboutPage() {
               </div>
               <h2 className="text-3xl font-bold">
                 <span className="text-primary">&lt;</span>
-                Beyond Code
+                <TextReveal text="Beyond Code" className="inline-block" />
                 <span className="text-primary">/&gt;</span>
               </h2>
             </motion.div>
 
             <div className="space-y-6">
               {resumeData.coActivities.map((activity, index) => (
-                <motion.div
+                <BlurReveal
                   key={activity.title}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  direction={index % 2 === 0 ? "right" : "left"}
+                  delay={index * 0.05}
                   className="bg-card/50 backdrop-blur-sm rounded-xl border border-border hover:border-purple-500/30 transition-all overflow-hidden"
                 >
                   {/* Activity Header */}
@@ -543,7 +549,7 @@ export default function AboutPage() {
                       ))}
                     </ul>
                   </div>
-                </motion.div>
+                </BlurReveal>
               ))}
             </div>
           </div>

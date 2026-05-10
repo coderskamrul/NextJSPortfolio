@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { ScrollProgressBar } from '@/components/scroll/scroll-primitives'
 import './globals.css'
 
 const geist = Geist({ 
@@ -57,6 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${geist.variable} ${geistMono.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+        <ScrollProgressBar />
         {children}
         <Analytics />
       </body>

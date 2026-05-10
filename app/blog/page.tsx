@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/animated-section";
+import { TiltCard, BlurReveal, FloatingOrbs, CountUp } from "@/components/scroll/scroll-primitives";
 import { 
   BookOpen, 
   Calendar, 
@@ -84,6 +85,7 @@ export default function BlogPage() {
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 relative overflow-hidden">
+        <FloatingOrbs count={2} />
         {/* Animated Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(100,200,180,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(100,200,180,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
         
@@ -159,11 +161,11 @@ export default function BlogPage() {
             >
               <div className="flex items-center gap-2 px-3 py-1.5 bg-card/50 border border-border rounded">
                 <Database className="w-3 h-3 text-primary" />
-                <span className="text-muted-foreground">{blogPosts.length} posts</span>
+                <span className="text-muted-foreground"><CountUp to={blogPosts.length} /> posts</span>
               </div>
               <div className="flex items-center gap-2 px-3 py-1.5 bg-card/50 border border-border rounded">
                 <Cpu className="w-3 h-3 text-yellow-400" />
-                <span className="text-muted-foreground">{categories.length - 1} categories</span>
+                <span className="text-muted-foreground"><CountUp to={categories.length - 1} /> categories</span>
               </div>
               <div className="flex items-center gap-2 px-3 py-1.5 bg-card/50 border border-border rounded">
                 <Zap className="w-3 h-3 text-green-400" />
@@ -286,6 +288,7 @@ export default function BlogPage() {
             <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
           </div>
 
+          <BlurReveal direction="up">
           <Link href={`/blog/${blogPosts[0].slug}`}>
             <motion.div
               whileHover={{ scale: 1.002 }}
@@ -379,6 +382,7 @@ export default function BlogPage() {
               </div>
             </motion.div>
           </Link>
+          </BlurReveal>
         </div>
       </AnimatedSection>
 
@@ -420,6 +424,7 @@ export default function BlogPage() {
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredPosts.map((post, index) => (
                 <StaggerItem key={post.id}>
+                  <TiltCard intensity={6} className="h-full">
                   <Link href={`/blog/${post.slug}`}>
                     <motion.article
                       whileHover={{ y: -4 }}
@@ -495,6 +500,7 @@ export default function BlogPage() {
                       </div>
                     </motion.article>
                   </Link>
+                  </TiltCard>
                 </StaggerItem>
               ))}
             </StaggerContainer>

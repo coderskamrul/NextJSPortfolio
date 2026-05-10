@@ -10,6 +10,7 @@ import {
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { resumeData } from "@/lib/resume-data";
+import { CountUp, TiltCard, FloatingOrbs } from "@/components/scroll/scroll-primitives";
 
 const skillCategories = [
   {
@@ -172,6 +173,9 @@ export default function SkillsPage() {
     <main className="min-h-screen bg-background">
       <Navigation />
       
+      {/* Floating ambient orbs */}
+      <FloatingOrbs count={2} />
+
       {/* Matrix Rain Background */}
       {mounted && (
         <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-20">
@@ -291,12 +295,14 @@ export default function SkillsPage() {
               <motion.div
                 key={category.id}
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
                 onMouseEnter={() => setActiveCategory(category.id)}
                 onMouseLeave={() => setActiveCategory(null)}
                 className={`relative group cursor-pointer ${isActive ? "z-10" : ""}`}
               >
+                <TiltCard intensity={6} className="h-full">
                 {/* Card */}
                 <div className={`
                   relative bg-card/80 backdrop-blur-sm rounded-xl border overflow-hidden
@@ -373,6 +379,7 @@ export default function SkillsPage() {
                   <div className={`absolute bottom-2 left-2 w-3 h-3 border-l-2 border-b-2 ${category.borderColor} opacity-0 group-hover:opacity-100 transition-opacity`} />
                   <div className={`absolute bottom-2 right-2 w-3 h-3 border-r-2 border-b-2 ${category.borderColor} opacity-0 group-hover:opacity-100 transition-opacity`} />
                 </div>
+                </TiltCard>
               </motion.div>
             );
           })}
@@ -419,8 +426,9 @@ export default function SkillsPage() {
                     <div className="h-2 bg-muted rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
-                        animate={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: index * 0.15, ease: "easeOut" }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 1.2, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
                         className={`h-full ${skill.color} relative`}
                       >
                         {/* Shine effect */}
@@ -434,19 +442,27 @@ export default function SkillsPage() {
               {/* Footer Stats */}
               <div className="mt-8 pt-6 border-t border-border grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="text-center p-3 bg-muted/30 rounded-lg">
-                  <div className="font-mono text-2xl font-bold text-primary">1500+</div>
+                  <div className="font-mono text-2xl font-bold text-primary">
+                    <CountUp to={1500} suffix="+" />
+                  </div>
                   <div className="font-mono text-xs text-muted-foreground">Problems Solved</div>
                 </div>
                 <div className="text-center p-3 bg-muted/30 rounded-lg">
-                  <div className="font-mono text-2xl font-bold text-cyan-400">100K+</div>
+                  <div className="font-mono text-2xl font-bold text-cyan-400">
+                    <CountUp to={100} suffix="K+" />
+                  </div>
                   <div className="font-mono text-xs text-muted-foreground">Users Impacted</div>
                 </div>
                 <div className="text-center p-3 bg-muted/30 rounded-lg">
-                  <div className="font-mono text-2xl font-bold text-green-400">5+</div>
+                  <div className="font-mono text-2xl font-bold text-green-400">
+                    <CountUp to={5} suffix="+" />
+                  </div>
                   <div className="font-mono text-xs text-muted-foreground">Plugins Built</div>
                 </div>
                 <div className="text-center p-3 bg-muted/30 rounded-lg">
-                  <div className="font-mono text-2xl font-bold text-yellow-400">100+</div>
+                  <div className="font-mono text-2xl font-bold text-yellow-400">
+                    <CountUp to={100} suffix="+" />
+                  </div>
                   <div className="font-mono text-xs text-muted-foreground">CF Contests</div>
                 </div>
               </div>

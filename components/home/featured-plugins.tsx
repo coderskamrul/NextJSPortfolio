@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ExternalLink, Users, Puzzle, ArrowRight, Terminal, Code, GitBranch, Zap } from "lucide-react";
 import { resumeData } from "@/lib/resume-data";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/animated-section";
+import { TiltCard, CountUp, TextReveal, ParallaxY } from "@/components/scroll/scroll-primitives";
 import { Button } from "@/components/ui/button";
 
 export function FeaturedPlugins() {
@@ -14,8 +15,10 @@ export function FeaturedPlugins() {
 
   return (
     <AnimatedSection className="py-20 relative overflow-hidden">
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(100,200,180,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(100,200,180,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      {/* Parallax background grid */}
+      <ParallaxY offset={60} className="absolute inset-0 -z-0">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(100,200,180,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(100,200,180,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      </ParallaxY>
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header - Terminal Style */}
@@ -63,7 +66,7 @@ export function FeaturedPlugins() {
           <div>
             <h2 className="text-3xl md:text-4xl font-bold font-mono mb-2">
               <span className="text-primary">&lt;</span>
-              FEATURED_PLUGINS
+              <TextReveal text="FEATURED_PLUGINS" className="inline-block" />
               <span className="text-primary">/&gt;</span>
             </h2>
             <p className="text-muted-foreground font-mono text-sm">
@@ -83,6 +86,7 @@ export function FeaturedPlugins() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {featuredPlugins.map((plugin, index) => (
             <StaggerItem key={plugin.name}>
+              <TiltCard intensity={6} className="h-full">
               <motion.div
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}
@@ -170,6 +174,7 @@ export function FeaturedPlugins() {
                   </div>
                 </div>
               </motion.div>
+              </TiltCard>
             </StaggerItem>
           ))}
         </StaggerContainer>
@@ -184,17 +189,17 @@ export function FeaturedPlugins() {
           <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card/50 border border-border">
             <Zap className="w-4 h-4 text-yellow-400" />
             <span className="text-muted-foreground">Total Installs:</span>
-            <span className="text-yellow-400 font-bold">100K+</span>
+            <span className="text-yellow-400 font-bold"><CountUp to={100} suffix="K+" /></span>
           </div>
           <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card/50 border border-border">
             <Code className="w-4 h-4 text-green-400" />
             <span className="text-muted-foreground">Active Projects:</span>
-            <span className="text-green-400 font-bold">5+</span>
+            <span className="text-green-400 font-bold"><CountUp to={5} suffix="+" /></span>
           </div>
           <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card/50 border border-border">
             <GitBranch className="w-4 h-4 text-cyan-400" />
             <span className="text-muted-foreground">Contributions:</span>
-            <span className="text-cyan-400 font-bold">3+</span>
+            <span className="text-cyan-400 font-bold"><CountUp to={3} suffix="+" /></span>
           </div>
         </motion.div>
       </div>

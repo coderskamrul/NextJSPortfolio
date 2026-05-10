@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { AnimatedSection } from "@/components/animated-section";
+import { Magnetic, FloatingOrbs, TextReveal, TiltCard } from "@/components/scroll/scroll-primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -161,6 +162,7 @@ export default function ContactPage() {
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 relative overflow-hidden">
+        <FloatingOrbs count={3} />
         {/* Matrix Rain Background */}
         {mounted && (
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -221,16 +223,17 @@ export default function ContactPage() {
           {/* Connection Status Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
             {contactMethods.map((method, index) => (
+              <TiltCard key={method.label} intensity={10} className="h-full">
               <motion.a
-                key={method.label}
                 href={method.href}
                 target={method.href.startsWith("http") ? "_blank" : undefined}
                 rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.02, y: -4 }}
-                className="bg-card/80 backdrop-blur-sm rounded-xl border border-border hover:border-primary/30 transition-all overflow-hidden group"
+                className="block bg-card/80 backdrop-blur-sm rounded-xl border border-border hover:border-primary/30 transition-all overflow-hidden group h-full"
               >
                 {/* Status Bar */}
                 <div className="px-4 py-2 border-b border-border bg-card/50 flex items-center justify-between">
@@ -251,6 +254,7 @@ export default function ContactPage() {
                   </span>
                 </div>
               </motion.a>
+              </TiltCard>
             ))}
           </div>
 
@@ -452,7 +456,8 @@ export default function ContactPage() {
                         />
                       </div>
 
-                      {/* Submit Button */}
+                      {/* Submit Button — magnetic, drifts toward cursor */}
+                      <Magnetic strength={0.25}>
                       <Button
                         type="submit"
                         disabled={isSubmitting}
@@ -475,6 +480,7 @@ export default function ContactPage() {
                           </div>
                         )}
                       </Button>
+                      </Magnetic>
 
                       {/* Security Notice */}
                       <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
@@ -500,7 +506,7 @@ export default function ContactPage() {
                 <span className="text-muted-foreground">$</span> ./quick_connect.sh
               </h3>
               <p className="text-muted-foreground mb-6">
-                Prefer a direct connection? Choose your preferred channel below.
+                <TextReveal text="Prefer a direct connection? Choose your preferred channel below." />
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <a

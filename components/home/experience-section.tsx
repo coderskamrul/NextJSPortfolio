@@ -5,14 +5,17 @@ import { motion } from "framer-motion";
 import { Briefcase, Calendar, ChevronRight, Building2, GitCommit, Terminal, MapPin, GraduationCap } from "lucide-react";
 import { resumeData } from "@/lib/resume-data";
 import { AnimatedSection } from "@/components/animated-section";
+import { ParallaxY, CharReveal } from "@/components/scroll/scroll-primitives";
 
 export function ExperienceSection() {
   const [activeExp, setActiveExp] = useState(0);
 
   return (
     <AnimatedSection className="py-20 relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(100,200,180,0.03)_0%,transparent_70%)]" />
+      {/* Background pattern with parallax drift */}
+      <ParallaxY offset={80} className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(100,200,180,0.03)_0%,transparent_70%)]" />
+      </ParallaxY>
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header - Terminal Style */}
@@ -40,7 +43,8 @@ export function ExperienceSection() {
           </div>
           
           <h2 className="text-3xl md:text-4xl font-bold font-mono mb-4">
-            <span className="text-primary">&gt;_</span> WORK_EXPERIENCE
+            <span className="text-primary">&gt;_</span>{" "}
+            <CharReveal text="WORK_EXPERIENCE" className="inline-block" />
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto font-mono text-sm">
             // Building scalable WordPress solutions for companies serving thousands of users
