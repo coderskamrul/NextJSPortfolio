@@ -36,24 +36,37 @@ export const resumeData = {
       company: "Startise Limited",
       role: "Software Engineer",
       period: "Jul-2025 – Present",
-      highlights: [
+      pluginhighlights: [
         "Building large-scale WordPress plugins with 20K–100K+ active installs",
         "Contributing to BetterLinks with advanced link tracking and redirection systems",
         "Integrating AI-powered functionalities for enhanced user workflows",
         "Maintaining Simple 301 Redirects with performance optimization",
         "Designing scalable backend systems using PHP, WordPress APIs, and MySQL"
+      ],
+      fullstackhighlights: [
+        "Developing and maintaining a large-scale backend system using Node.js and MySQL.",
+        "Building AI-powered features with effective prompting and contextual AI to save user time.",
+        "Designing RESTful APIs and backend logic for seamless integration with React.js.",
+        "Collaborating closely with cross-functional teams to deliver scalable, production-ready solutions",
       ]
+
     },
     {
       company: "WPXPO",
       role: "Software Engineer",
       period: "Oct-2023 – Jun-2025",
-      highlights: [
+      pluginhighlights: [
         "Developed and maintained WordPress plugins focusing on scalability",
         "Contributed to Wholesalex with role-based pricing and dynamic discount rules",
         "Built and enhanced WowRevenue with conversion-focused features",
         "Utilized WordPress Hooks and REST APIs for extensible features",
         "Optimized backend performance through efficient PHP logic and MySQL queries"
+      ],
+      fullstackhighlights: [
+        "Developed and maintained scalable, user-centric web applications in a collaborative team environment.",
+        "Worked closely with backend engineers to design and integrate RESTful API.",
+        "Enhanced application performance, reliability, and code quality using best practices.",
+        "Built features using React, Next.js, TypeScript, Node.js, PHP, MongoDB, and MySQL.",
       ]
     }
   ],

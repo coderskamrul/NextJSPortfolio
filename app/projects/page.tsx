@@ -7,12 +7,13 @@ import { Footer } from "@/components/footer";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/animated-section";
 import { TiltCard, TextReveal, ParallaxY, FloatingOrbs, Marquee } from "@/components/scroll/scroll-primitives";
 import { resumeData } from "@/lib/resume-data";
-import { 
-  Puzzle, 
-  Code2, 
-  ExternalLink, 
-  Github, 
-  Users, 
+import { roleContent } from "@/lib/role-config";
+import {
+  Puzzle,
+  Code2,
+  ExternalLink,
+  Github,
+  Users,
   Star,
   Filter,
   Layers,
@@ -20,26 +21,20 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const filterOptions = [
-  { id: "all", label: "All Projects" },
-  { id: "plugin", label: "WordPress Plugins" },
-  { id: "fullstack", label: "Full Stack" },
-  { id: "react", label: "React" },
-  { id: "java", label: "Java" },
-];
+const filterOptions = roleContent.projects.filters;
 
 export default function ProjectsPage() {
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [activeFilter, setActiveFilter] = useState(roleContent.projects.defaultFilter);
 
   const filteredProjects = () => {
+    const allPlugins = roleContent.projects.showPluginsSection ? resumeData.plugins : [];
     if (activeFilter === "plugin") {
-      return { plugins: resumeData.plugins, projects: [] };
+      return { plugins: allPlugins, projects: [] };
     }
     if (activeFilter === "all") {
-      return { plugins: resumeData.plugins, projects: resumeData.projects };
+      return { plugins: allPlugins, projects: resumeData.projects };
     }
-    // Filter by category
-    const filtered = resumeData.projects.filter(p => 
+    const filtered = resumeData.projects.filter((p) =>
       p.category.toLowerCase().includes(activeFilter.toLowerCase())
     );
     return { plugins: [], projects: filtered };
@@ -77,8 +72,7 @@ export default function ProjectsPage() {
               </span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              A collection of WordPress plugins and full-stack applications I&apos;ve built and contributed to.
-              Each project represents a commitment to quality and scalable solutions.
+              {roleContent.projects.heroParagraph}
             </p>
           </motion.div>
 
@@ -209,7 +203,7 @@ export default function ProjectsPage() {
                 <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
                   <Globe className="w-5 h-5 text-primary" />
                 </div>
-                <h2 className="text-2xl font-bold">Development Projects</h2>
+                <h2 className="text-2xl font-bold">{roleContent.projects.projectsSectionTitle}</h2>
                 <span className="px-3 py-1 text-xs font-mono bg-secondary/50 rounded-full border border-border">
                   {projects.length} projects
                 </span>

@@ -10,9 +10,10 @@ import {
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { resumeData } from "@/lib/resume-data";
+import { roleContent } from "@/lib/role-config";
 import { CountUp, TiltCard, FloatingOrbs } from "@/components/scroll/scroll-primitives";
 
-const skillCategories = [
+const allSkillCategories = [
   {
     id: "languages",
     title: "Programming Languages",
@@ -113,6 +114,10 @@ const skillCategories = [
     description: "Build tools and development utilities"
   }
 ];
+
+const skillCategories = roleContent.skills.showWordPressCategory
+  ? allSkillCategories
+  : allSkillCategories.filter((c) => c.id !== "wordpress");
 
 const terminalCommands = [
   "$ sudo scan /skills --deep",
@@ -228,7 +233,7 @@ export default function SkillsPage() {
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-card/50 rounded-lg border border-border">
               <Layers className="w-4 h-4 text-purple-400" />
-              <span className="font-mono text-sm"><span className="text-primary">9</span> Categories</span>
+              <span className="font-mono text-sm"><span className="text-primary">{skillCategories.length}</span> Categories</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-card/50 rounded-lg border border-border">
               <Shield className="w-4 h-4 text-green-400" />
@@ -410,14 +415,7 @@ export default function SkillsPage() {
               </h3>
 
               <div className="space-y-6">
-                {[
-                  { name: "WordPress/PHP", level: 95, color: "bg-blue-500" },
-                  { name: "JavaScript/TypeScript", level: 90, color: "bg-yellow-500" },
-                  { name: "React/Next.js", level: 88, color: "bg-cyan-500" },
-                  { name: "Node.js/Express", level: 85, color: "bg-green-500" },
-                  { name: "Database (MySQL/MongoDB)", level: 82, color: "bg-purple-500" },
-                  { name: "Problem Solving/DSA", level: 90, color: "bg-red-500" },
-                ].map((skill, index) => (
+                {roleContent.skills.proficiency.map((skill, index) => (
                   <div key={skill.name} className="space-y-2">
                     <div className="flex justify-between items-center">
                       <span className="font-mono text-sm text-muted-foreground">{skill.name}</span>
@@ -441,30 +439,14 @@ export default function SkillsPage() {
 
               {/* Footer Stats */}
               <div className="mt-8 pt-6 border-t border-border grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="text-center p-3 bg-muted/30 rounded-lg">
-                  <div className="font-mono text-2xl font-bold text-primary">
-                    <CountUp to={1500} suffix="+" />
+                {roleContent.skills.footerStats.map((stat) => (
+                  <div key={stat.label} className="text-center p-3 bg-muted/30 rounded-lg">
+                    <div className={`font-mono text-2xl font-bold ${stat.color}`}>
+                      <CountUp to={stat.value} suffix={stat.suffix} />
+                    </div>
+                    <div className="font-mono text-xs text-muted-foreground">{stat.label}</div>
                   </div>
-                  <div className="font-mono text-xs text-muted-foreground">Problems Solved</div>
-                </div>
-                <div className="text-center p-3 bg-muted/30 rounded-lg">
-                  <div className="font-mono text-2xl font-bold text-cyan-400">
-                    <CountUp to={100} suffix="K+" />
-                  </div>
-                  <div className="font-mono text-xs text-muted-foreground">Users Impacted</div>
-                </div>
-                <div className="text-center p-3 bg-muted/30 rounded-lg">
-                  <div className="font-mono text-2xl font-bold text-green-400">
-                    <CountUp to={5} suffix="+" />
-                  </div>
-                  <div className="font-mono text-xs text-muted-foreground">Plugins Built</div>
-                </div>
-                <div className="text-center p-3 bg-muted/30 rounded-lg">
-                  <div className="font-mono text-2xl font-bold text-yellow-400">
-                    <CountUp to={100} suffix="+" />
-                  </div>
-                  <div className="font-mono text-xs text-muted-foreground">CF Contests</div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

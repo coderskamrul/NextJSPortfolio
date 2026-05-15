@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/animated-section";
 import { CountUp, TextReveal, ParallaxY, BlurReveal, FloatingOrbs } from "@/components/scroll/scroll-primitives";
 import { resumeData } from "@/lib/resume-data";
+import { roleContent } from "@/lib/role-config";
 import Link from "next/link";
 import Image from "next/image";
 import { 
@@ -36,9 +37,11 @@ import { Button } from "@/components/ui/button";
 const bootSequence = [
   "$ cat /home/developer/profile.json",
   "[LOAD] Parsing developer credentials...",
-  "[OK] Identity verified: WordPress Plugin Developer",
+  `[OK] Identity verified: ${roleContent.aboutBootIdentity}`,
   "[OK] Experience: 2+ years",
-  "[OK] Active plugin users: 100K+",
+  roleContent.showFeaturedPlugins
+    ? "[OK] Active plugin users: 100K+"
+    : "[OK] Production projects shipped: 8+",
   "[OK] Problems solved: 1500+",
   "[READY] Profile loaded successfully"
 ];
@@ -64,11 +67,32 @@ const asciiHeaders = {
 };
 
 const statCards = [
-  { icon: Users, label: "Plugin Users", value: 100, suffix: "K+", color: "text-cyan-400" },
+  {
+    icon: Users,
+    label: roleContent.about.impactStat.label,
+    value: roleContent.about.impactStat.value,
+    suffix: roleContent.about.impactStat.suffix,
+    color: "text-cyan-400",
+  },
   { icon: Code2, label: "Problems Solved", value: 1500, suffix: "+", color: "text-green-400" },
   { icon: Trophy, label: "Awards Won", value: 8, suffix: "+", color: "text-yellow-400" },
   { icon: Target, label: "ICPC Events", value: 5, suffix: "+", color: "text-purple-400" }
 ];
+
+const interestIconMap: Record<string, typeof Code2> = {
+  "Plugin Development": Code2,
+  "Full Stack Engineering": Code2,
+  "Problem Solving": Terminal,
+  "Open Source": Globe,
+  "Performance": Zap,
+  "Learning": BookOpen,
+  "Mentoring": Heart,
+};
+
+const interestItems = roleContent.about.interests.map((label) => ({
+  label,
+  icon: interestIconMap[label] ?? Code2,
+}));
 
 const skills = [
   { category: "Languages", icon: FileCode, items: ["C", "C++", "PHP", "JavaScript", "TypeScript", "Python"] },
@@ -233,9 +257,9 @@ export default function AboutPage() {
                     </motion.div>
 
                     <h2 className={`text-xl font-bold mb-1 ${glitchText ? 'text-glow' : ''}`}>
-                      Plugin & SASS Developer
+                      {roleContent.about.avatarCaption}
                     </h2>
-                    <p className="text-primary font-mono text-sm mb-4">@software_engineer</p>
+                    <p className="text-primary font-mono text-sm mb-4">{roleContent.about.handle}</p>
 
                     {/* Status Badge */}
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/20 border border-green-500/30">
@@ -572,14 +596,7 @@ export default function AboutPage() {
           </motion.div>
 
           <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
-            {[
-              { icon: Code2, label: "Plugin Development" },
-              { icon: Terminal, label: "Problem Solving" },
-              { icon: Globe, label: "Open Source" },
-              { icon: Zap, label: "Performance" },
-              { icon: BookOpen, label: "Learning" },
-              { icon: Heart, label: "Mentoring" }
-            ].map((interest, index) => (
+            {interestItems.map((interest, index) => (
               <motion.div
                 key={interest.label}
                 initial={{ opacity: 0, scale: 0.8 }}

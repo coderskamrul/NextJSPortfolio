@@ -3,12 +3,19 @@
 import { motion } from "framer-motion";
 import { Code2, Terminal, Braces, Database } from "lucide-react";
 import { CountUp, BlurReveal } from "@/components/scroll/scroll-primitives";
+import { roleContent } from "@/lib/role-config";
 
 const stats = [
   { label: "Active Users", value: 100, suffix: "K+", icon: Database, color: "text-cyan-400" },
   { label: "Problems Solved", value: 1500, suffix: "+", icon: Code2, color: "text-green-400" },
   { label: "Years Exp", value: 2, suffix: "+", icon: Terminal, color: "text-yellow-400" },
-  { label: "Plugins Built", value: 5, suffix: "+", icon: Braces, color: "text-purple-400" },
+  {
+    label: roleContent.heroStatLast.label,
+    value: roleContent.heroStatLast.value,
+    suffix: roleContent.heroStatLast.suffix,
+    icon: Braces,
+    color: "text-purple-400",
+  },
 ];
 
 export function HeroCard() {

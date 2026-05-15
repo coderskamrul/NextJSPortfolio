@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    IS_PLUGIN_ROLE: process.env.IS_PLUGIN_ROLE,
+  },
   typescript: {
     ignoreBuildErrors: true,
   },

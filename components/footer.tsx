@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Terminal, Code2, ExternalLink } from "lucide-react";
+import { roleContent } from "@/lib/role-config";
 
 const footerLinks = {
   navigation: [
@@ -50,8 +51,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-muted-foreground text-sm max-w-md leading-relaxed">
-              WordPress Plugin Developer crafting scalable solutions for 100K+ users.
-              Building the future of web development, one plugin at a time.
+              {roleContent.footerTagline}
             </p>
             <div className="flex items-center gap-3 mt-6">
               {footerLinks.social.map((social) => (

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Briefcase, Calendar, ChevronRight, Building2, GitCommit, Terminal, MapPin, GraduationCap } from "lucide-react";
 import { resumeData } from "@/lib/resume-data";
+import { roleContent, isPluginRole } from "@/lib/role-config";
 import { AnimatedSection } from "@/components/animated-section";
 import { ParallaxY, CharReveal } from "@/components/scroll/scroll-primitives";
 
@@ -47,7 +48,7 @@ export function ExperienceSection() {
             <CharReveal text="WORK_EXPERIENCE" className="inline-block" />
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto font-mono text-sm">
-            // Building scalable WordPress solutions for companies serving thousands of users
+            {roleContent.experienceSubtitle}
           </p>
         </motion.div>
 
@@ -148,7 +149,7 @@ export function ExperienceSection() {
                           <span className="text-primary">$</span> cat achievements.txt
                         </div>
                         <ul className="space-y-2">
-                          {exp.highlights.map((highlight, hIndex) => (
+                          {(isPluginRole ? exp.pluginhighlights : exp.fullstackhighlights).map((highlight, hIndex) => (
                             <motion.li
                               key={hIndex}
                               initial={{ opacity: 0, x: -10 }}

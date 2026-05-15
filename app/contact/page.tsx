@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { resumeData } from "@/lib/resume-data";
+import { roleContent } from "@/lib/role-config";
 import { 
   Mail, 
   Github, 
@@ -212,6 +213,9 @@ export default function ContactPage() {
             <p className="text-xl md:text-2xl text-muted-foreground font-mono">
               <span className="text-primary">$</span> {typingText}
               <span className="inline-block w-2 h-5 bg-primary ml-1 animate-pulse" />
+            </p>
+            <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
+              {roleContent.contact.introLine}
             </p>
           </motion.div>
         </div>

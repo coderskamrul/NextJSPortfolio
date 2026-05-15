@@ -35,14 +35,10 @@ const socialItems = [
   { key: "youtube", Icon: Youtube, label: "YouTube", color: "hover:text-red-500 hover:border-red-500/60 hover:bg-red-500/10" },
 ] as const;
 import { resumeData } from "@/lib/resume-data";
+import { roleContent } from "@/lib/role-config";
 import { Button } from "@/components/ui/button";
 
-const rotatingHeadlines = [
-  "AWARD-WINNING ENGINEER",
-  "AI INNOVATION CHAMPION",
-  "COMPETITIVE PROGRAMMER",
-  "PROBLEM SOLVER",
-];
+const rotatingHeadlines = roleContent.rotatingHeadlines;
 
 const achievementStats = [
   { label: "Awards", value: "4+", icon: Trophy, color: "text-yellow-400" },
@@ -226,13 +222,13 @@ export function AwardsHeroSection() {
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/40 backdrop-blur-sm">
                 <Trophy className="w-3 h-3 text-yellow-400" />
                 <span className="font-mono text-[10px] uppercase tracking-widest text-yellow-300">
-                  Award Winner
+                  {roleContent.heroIntro.pillLabel}
                 </span>
               </div>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/40 backdrop-blur-sm">
                 <Sparkles className="w-3 h-3 text-primary" />
                 <span className="font-mono text-[10px] uppercase tracking-widest text-primary">
-                  AI Award 2025
+                  {roleContent.heroIntro.pillSecondary}
                 </span>
               </div>
             </motion.div>
@@ -264,7 +260,7 @@ export function AwardsHeroSection() {
                     textShadow: "0 0 40px rgba(100,200,180,0.3)",
                   }}
                 >
-                  HMD
+                  KAMRUL
                 </span>
                 {glitchActive && (
                   <span
@@ -272,7 +268,7 @@ export function AwardsHeroSection() {
                     style={{ transform: "translate(2px, -1px)" }}
                     aria-hidden
                   >
-                    HMD
+                    KAMRUL
                   </span>
                 )}
               </span>
@@ -283,7 +279,7 @@ export function AwardsHeroSection() {
                     textShadow: "0 0 40px rgba(251,191,36,0.3)",
                   }}
                 >
-                  KAMRUL
+                  HASAN
                 </span>
               </span>
             </motion.h1>
@@ -320,13 +316,17 @@ export function AwardsHeroSection() {
               className="mb-8"
             >
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-4 max-w-xl">
-                Building production software that{" "}
-                <span className="text-primary font-semibold">millions use</span>
+                Building{" "}
+                <span className="text-primary font-semibold">
+                  {roleContent.heroParagraph.leadHighlight}
+                </span>
                 , solving{" "}
-                <span className="text-cyan-400 font-semibold">1500+</span>{" "}
-                competitive problems, and now winning{" "}
+                <span className="text-cyan-400 font-semibold">
+                  {roleContent.heroParagraph.midHighlight}
+                </span>{" "}
+                competitive problems, and winning{" "}
                 <span className="text-yellow-400 font-semibold">
-                  AI innovation
+                  {roleContent.heroParagraph.tailHighlight}
                 </span>{" "}
                 challenges.
               </p>

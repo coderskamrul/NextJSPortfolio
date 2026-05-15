@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ScrollProgressBar } from '@/components/scroll/scroll-primitives'
+import { roleContent } from '@/lib/role-config'
 import './globals.css'
 
 const geist = Geist({ 
@@ -20,11 +21,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'SASS & Plugin Developer Portfolio',
-  description: 'Results-driven WordPress Plugin Developer with 2+ years of experience building scalable, high-performance plugins used by 100K+ active users.',
+  title: roleContent.metaTitle,
+  description: roleContent.metaDescription,
   generator: 'hmdkamrul',
-  keywords: ['coderskamrul', 'hmdkamrul', 'WordPress', 'Plugin Developer', 'PHP', 'React', 'Full Stack', 'Web Developer'],
-  authors: [{ name: 'WordPress Developer' }],
+  keywords: roleContent.metaKeywords,
+  authors: [{ name: roleContent.title }],
   icons: {
     icon: [
       // {
@@ -57,7 +58,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${geist.variable} ${geistMono.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+      <body suppressHydrationWarning className={`${geist.variable} ${geistMono.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ScrollProgressBar />
         {children}
         <Analytics />

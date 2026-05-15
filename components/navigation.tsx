@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Terminal, Wifi, Shield, Activity } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { roleContent } from "@/lib/role-config";
 
 const navItems = [
   { name: "Home", href: "/", cmd: "~" },
@@ -94,7 +95,7 @@ export function Navigation() {
                 <span className="font-mono text-xs text-primary">&gt;_</span>
                 <span className="font-bold tracking-tight">HMDKAMRUL.DEV</span>
               </div>
-              <span className="text-[10px] font-mono text-muted-foreground">WordPress Plugin Developer</span>
+              <span className="text-[10px] font-mono text-muted-foreground">{roleContent.navSubtitle}</span>
             </div>
           </Link>
 
