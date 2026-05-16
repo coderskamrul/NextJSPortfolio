@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ExternalLink,
   Github,
@@ -29,7 +30,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 export function FeaturedProjects() {
-  const featuredProjects = resumeData.projects.slice(0, 4);
+  const featuredProjects = resumeData.projects.slice(0, 3);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
@@ -105,7 +106,7 @@ export function FeaturedProjects() {
           </Button>
         </div>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredProjects.map((project, index) => (
             <StaggerItem key={project.id}>
               <TiltCard intensity={6} className="h-full">
@@ -136,6 +137,24 @@ export function FeaturedProjects() {
                         {project.category.toUpperCase()}
                       </span>
                     </div>
+
+                    {project.banner && (
+                      <div className="relative aspect-video bg-muted overflow-hidden border-b border-primary/20">
+                        <Image
+                          src={project.banner}
+                          alt={project.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/20 to-transparent" />
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100"
+                          initial={{ y: "-100%" }}
+                          whileHover={{ y: "100%" }}
+                          transition={{ duration: 1.2 }}
+                        />
+                      </div>
+                    )}
 
                     <div className="p-5">
                       <div className="flex items-start justify-between gap-4 mb-4">

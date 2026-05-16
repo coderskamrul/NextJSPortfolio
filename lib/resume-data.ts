@@ -130,13 +130,24 @@ export const resumeData = {
   
   projects: [
     {
+      id: 0,
+      title: "Full Stack Ecommerce",
+      category: "Full Stack",
+      description: "A full-stack e-commerce solution with real-time inventory management",
+      technologies: ["React", "Next.js", "Tailwind CSS", "Node.js", "MongoDB", "Stripe", "SSLCOMMERZ"],
+      liveDemo: "https://ecommerce-steel-iota.vercel.app/",
+      code: "https://github.com/coderskamrul",
+      banner: "https://i.ibb.co.com/4R6XNnxK/Screenshot-2026-05-16-at-10-22-10-AM.png"
+    },
+    {
       id: 1,
       title: "Coffee Shop E-Commerce",
       category: "Full Stack",
       description: "A full-stack e-commerce solution with real-time inventory management",
       technologies: ["React", "Next.js", "Tailwind CSS", "Node.js", "MongoDB", "Stripe"],
       liveDemo: "https://coffee-shop-cyan-five.vercel.app/",
-      code: "https://github.com/coderskamrul/Coffee-Shop-With-Nextjs"
+      code: "https://github.com/coderskamrul/Coffee-Shop-With-Nextjs",
+      banner: "https://i.ibb.co.com/xKVRRmCD/coffee-project-img.png"
     },
     {
       id: 2,
@@ -145,16 +156,18 @@ export const resumeData = {
       description: "A fully responsive and visually captivating travel website built with Next.js and Tailwind CSS.",
       technologies: ["React", "Next.js", "Tailwind CSS", "Node.js", "MongoDB", "Stripe"],
       liveDemo: "https://travel-app-rho-blush.vercel.app/",
-      code: "https://github.com/coderskamrul/Travel-Website-Nextjs"
+      code: "https://github.com/coderskamrul/Travel-Website-Nextjs",
+      banner: "https://i.ibb.co.com/Vpkq8bPG/travel-project-img.png"
     },
     {
       id: 3,
-      title: "InnoMarkt Consultancy & Service Provider",
+      title: "InnoMarkt Consultancy & Service Provider k",
       category: "Full Stack",
       description: "A full-stack consultancy and service provider platform with real-time booking and payment processing.",
       technologies: ["React", "Tailwind CSS", "Node.js", "MongoDB", "Stripe"],
       liveDemo: "https://coding-projects-20c57.web.app/",
-      code: "https://github.com/coderskamrul/InnoMarkt-Consultancy-and-Service-Provider"
+      code: "https://github.com/coderskamrul/InnoMarkt-Consultancy-and-Service-Provider",
+      banner: "https://i.ibb.co.com/qFgbVVVH/service-provider-project-img.png"
     },
     {
       id: 4,
@@ -163,7 +176,8 @@ export const resumeData = {
       description: "A full-stack task manager application with JWT authentication and real-time updates.",
       technologies: ["React", "Express", "Tailwind CSS", "Node.js", "MongoDB", "Socket.io"],
       liveDemo: "https://github.com/coderskamrul/React-Task-Manager-With-JWT",
-      code: "https://github.com/coderskamrul/React-Task-Manager-With-JWT"
+      code: "https://github.com/coderskamrul/React-Task-Manager-With-JWT",
+      banner: "https://i.ibb.co.com/6J1nhBfH/Task-manager-Project-view-02.png"
     },
     {
       id: 5,
@@ -172,7 +186,8 @@ export const resumeData = {
       description: "A personal portfolio website built with React, CSS, and Framer Motion.",
       technologies: ["React", "CSS", "Framer Motion"],
       liveDemo: "https://hmdkamrul.netlify.app/",
-      code: "https://github.com/coderskamrul/react-portfolios"
+      code: "https://github.com/coderskamrul/react-portfolios",
+      banner: "https://i.ibb.co.com/n87Ppft0/portfolio-react.jpg"
     },
     {
       id: 6,
@@ -181,7 +196,8 @@ export const resumeData = {
       description: "A blood bank management system with Java, MySQL, and JavaFX.",
       technologies: ["Java", "JavaFX", "MySQL"],
       liveDemo: "https://github.com/coderskamrul/Blood-Bank-Management",
-      code: "https://github.com/coderskamrul/Blood-Bank-Management"
+      code: "https://github.com/coderskamrul/Blood-Bank-Management",
+      banner: "https://i.ibb.co.com/v4XRHwBC/bloodbank.png"
     },
     {
       id: 7,
@@ -190,7 +206,8 @@ export const resumeData = {
       description: "A hostel management system with Java, MySQL, and JavaFX.",
       technologies: ["Java", "JavaFX", "MySQL"],
       liveDemo: "https://github.com/coderskamrul/Hostel-Management-System-Using-JavaFX",
-      code: "https://github.com/coderskamrul/Hostel-Management-System-Using-JavaFX"
+      code: "https://github.com/coderskamrul/Hostel-Management-System-Using-JavaFX",
+      banner: "https://i.ibb.co.com/KxXFSXCs/hostel-managment-java.png"
     },
     {
       id: 8,
@@ -199,7 +216,8 @@ export const resumeData = {
       description: "A fully functional e-commerce website with PHP, MySQL, and Bootstrap.",
       technologies: ["PHP", "MySQL", "Bootstrap"],
       liveDemo: "https://github.com/coderskamrul/electronics-ecommerce-",
-      code: "https://github.com/coderskamrul/electronics-ecommerce-"
+      code: "https://github.com/coderskamrul/electronics-ecommerce-",
+      banner: "https://i.ibb.co.com/5xTRRNMY/ecommerce-with-php.png"
     }
   ],
   

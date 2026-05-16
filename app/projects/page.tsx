@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/animated-section";
@@ -209,7 +210,7 @@ export default function ProjectsPage() {
                 </span>
               </motion.div>
 
-              <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {projects.map((project) => (
                   <StaggerItem key={project.title}>
                     <TiltCard intensity={5} className="h-full">
@@ -217,6 +218,24 @@ export default function ProjectsPage() {
                       whileHover={{ scale: 1.01, y: -4 }}
                       className="h-full bg-card/50 backdrop-blur-sm rounded-xl border border-border overflow-hidden hover:border-primary/30 transition-all group"
                     >
+                      {/* Project Cover */}
+                      {project.banner && (
+                        <div className="relative aspect-video bg-muted overflow-hidden">
+                          <Image
+                            src={project.banner}
+                            alt={project.title}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
+                          <div className="absolute top-4 left-4">
+                            <span className="px-2.5 py-1 text-[10px] font-mono rounded-full bg-background/70 backdrop-blur-sm text-primary border border-primary/30">
+                              {project.category}
+                            </span>
+                          </div>
+                        </div>
+                      )}
+
                       {/* Project Header */}
                       <div className="p-6 border-b border-border">
                         <div className="flex items-start justify-between gap-4">
