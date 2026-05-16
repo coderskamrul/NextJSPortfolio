@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Terminal, Wifi, Shield, Activity } from "lucide-react";
@@ -79,26 +80,7 @@ export function Navigation() {
       <nav className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="relative"
-            >
-              {/* Glowing border effect */}
-              <div className="absolute inset-0 bg-primary/20 rounded-lg blur-md group-hover:bg-primary/40 transition-all" />
-              <div className="relative p-2 rounded-lg bg-background border border-primary/50 group-hover:border-primary transition-colors">
-                <Terminal className="w-5 h-5 text-primary" />
-              </div>
-            </motion.div>
-            <div className="hidden sm:flex flex-col">
-              <div className="flex items-center gap-1">
-                <span className="font-mono text-xs text-primary">&gt;_</span>
-                <span className="font-bold tracking-tight">HMDKAMRUL.DEV</span>
-              </div>
-              <span className="text-[10px] font-mono text-muted-foreground">{roleContent.navSubtitle}</span>
-            </div>
-          </Link>
-
+          <Image src="/logo.png" alt="logo" width={250} height={130} className="rounded-md" />
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center">
             <div className="flex items-center bg-card/50 rounded-lg border border-border p-1">
